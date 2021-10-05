@@ -16,23 +16,34 @@ const Message = (props) => {
   )
 }
 
+let dialogs = [
+    {id: 1, name: "Валера"},
+    {id: 2, name: "иOne"},
+    {id: 3, name: "Сан Саныч"},
+    {id: 4, name: "Сашка Попуг"},
+    {id: 5, name: "Кириллл"}
+];
+
+let messages = [
+    {id: 1, message: "Здарова"},
+    {id: 2, message: "Ну шо?"},
+    {id: 3, message: "Го пить пиво"},
+    {id: 4, message: "Ыть"},
+    {id: 5, message: "Кавооо?"}
+];
+
+let dialogsElements = dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} /> );
+let messagesElements = messages.map( message => <Message message={message.message} /> );
+
 const Dialogs = (props) => {
     return (
         <div>
             <div className={s.dialogs}>
                 <div className={s.dialogsItems}>
-                    <DialogItem name="Валера" id="1" />
-                    <DialogItem name="иOne" id="2" />
-                    <DialogItem name="Сан Саныч" id="3" />
-                    <DialogItem name="Сашка Попуг" id="4" />
-                    <DialogItem name="Кириллл" id="5" />
+                    {dialogsElements}
                 </div>
                 <div className={s.messages}>
-                    <Message message="Здарова" />
-                    <Message message="Ну шо?" />
-                    <Message message="Го пить пиво" />
-                    <Message message="Ыть" />
-                    <Message message="Кавооо?" />
+                    {messagesElements}
                 </div>
             </div>
         </div>
