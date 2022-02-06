@@ -4,8 +4,20 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-    let dialogsElements = props.state.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} /> );
-    let messagesElements = props.state.messages.map( message => <Message message={message.message} /> );
+    let state = props.dialogsPage;
+
+    let dialogsElements = state.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} /> );
+    let messagesElements = state.messages.map( message => <Message message={message.message} /> );
+    let newMessageBody = state.newMessageBody;
+
+    let onSendMessageClick = () => {
+        props.sendMessage();
+    }
+
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.updateNewMessageBody(body);
+    }
 
     return (
         <div>
@@ -14,7 +26,17 @@ const Dialogs = (props) => {
                     {dialogsElements}
                 </div>
                 <div className={s.messages}>
-                    {messagesElements}
+                    <div>
+                        {messagesElements}
+                    </div>
+                    <div>
+                        <div>
+                            <textarea onChange={onNewMessageChange} value={newMessageBody} placeholder="Введите сообщение..."/>
+                        </div>
+                        <div>
+                            <button onClick={onSendMessageClick}>Отправить</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
