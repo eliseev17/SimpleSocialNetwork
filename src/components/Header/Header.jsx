@@ -9,7 +9,9 @@ const Header = (props) => {
                 src='https://uploads-ssl.webflow.com/5f8f7f6f45a2ba8926f2e652/5f9acb9b4c0d417a29a8dfbe_Exemplifi_Branding.png'
                 alt=''/>
             <div className={s.loginBlock}>
-                { props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink> }
+                { props.isAuth
+                    ? <div>{props.login} - <button onClick={props.logout}>Log out</button></div>
+                    : <NavLink to={'/login'}>Login</NavLink> }
             </div>
         </header>
     )
