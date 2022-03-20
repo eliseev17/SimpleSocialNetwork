@@ -9,7 +9,7 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginPage from "./components/Login/Login";
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "./redux/appReducer";
+import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 
 class App extends React.Component {
