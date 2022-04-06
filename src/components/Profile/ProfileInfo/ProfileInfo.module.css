@@ -2,6 +2,36 @@
     padding: 10px;
 }
 
+.mainPhotoContainer {
+    position: relative;
+    width: 100%;
+}
+
 .mainPhoto {
     max-width: 200px;
+}
+
+.mainPhotoContainer:hover .fileInput {
+    opacity: 0.7;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.fileInput {
+    padding: 6px;
+    bottom: 4px;
+    left: 0;
+    width: 188px;
+    text-align: center;
+    background: lightgray;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
+.contact {
+    padding-left: 10px;
 }
