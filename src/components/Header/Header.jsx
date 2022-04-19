@@ -6,7 +6,7 @@ const Header = (props) => {
     return (
         <header className={s.header}>
             <img
-                src='https://uploads-ssl.webflow.com/5f8f7f6f45a2ba8926f2e652/5f9acb9b4c0d417a29a8dfbe_Exemplifi_Branding.png'
+                src='https://cdn-icons-png.flaticon.com/512/1239/1239608.png'
                 alt=''/>
             <div className={s.loginBlock}>
                 { props.isAuth

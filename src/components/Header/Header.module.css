@@ -4,10 +4,12 @@
 }
 
 .header img {
+    padding: 15px 20px;
     width: 32px;
 }
 
 .loginBlock {
+    padding: 15px 20px;
     float: right;
 }
 

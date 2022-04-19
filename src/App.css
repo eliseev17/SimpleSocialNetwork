@@ -13,5 +13,6 @@
 .app-wrapper-content {
     grid-area: c;
     /*background-color: #fdea3b;*/
-    background-color: #c5c0aa;
+    /*background-color: #c5c0aa;*/
+    background-color: #f5f5ef;
 }
