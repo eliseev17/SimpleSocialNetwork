@@ -1,5 +1,6 @@
 import {profileAPI, usersAPI} from "../api/api";
 import profile from "../components/Profile/Profile";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
@@ -70,9 +71,14 @@ export const savePhoto = (file) => async (dispatch) => {
 
 export const saveProfile = (profile) => async (dispatch, getState) => {
     const userId = getState().auth.userId;
-    const response = await profileAPI.saveProfile(profile);
-    if (response.data.resultCode === 0) {
+    const data = await profileAPI.saveProfile(profile);
+    if (data.resultCode === 0) {
         dispatch(getUserProfile(userId));
+    } else {
+        let contactName = data.messages[0].split('>')[1];
+        contactName = contactName.substring(0, contactName.length - 1).toLowerCase();
+        dispatch(stopSubmit("edit-profile", {"contacts": {[contactName]: data.messages[0]} }));
+        return Promise.reject(data.messages[0]);
     }
 }
 
