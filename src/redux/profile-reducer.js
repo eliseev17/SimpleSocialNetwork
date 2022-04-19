@@ -8,12 +8,7 @@ const SET_STATUS = 'SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 let initialState = {
-    posts: [
-        {id: 1, message: "Hi, how are you?", likesCount: 0},
-        {id: 2, message: "It's my first post", likesCount: 23},
-        {id: 3, message: "ABOBA", likesCount: 54},
-        {id: 4, message: "oh shit here we go again", likesCount: 1488},
-    ],
+    posts: [],
     profile: null,
     status: ""
 };
@@ -70,6 +65,14 @@ export const savePhoto = (file) => async (dispatch) => {
     const data = await profileAPI.savePhoto(file);
     if (data.resultCode === 0) {
         dispatch(savePhotoSuccess(data.data.photos));
+    }
+}
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.userId;
+    const response = await profileAPI.saveProfile(profile);
+    if (response.data.resultCode === 0) {
+        dispatch(getUserProfile(userId));
     }
 }
 

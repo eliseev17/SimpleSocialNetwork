@@ -2,18 +2,18 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let initialState = {
     dialogs: [
-        {id: 1, name: "Валера"},
-        {id: 2, name: "иOne"},
-        {id: 3, name: "Сан Саныч"},
-        {id: 4, name: "Сашка Попуг"},
-        {id: 5, name: "Кириллл"}
+        {id: 1, name: "Иван"},
+        {id: 2, name: "Мария"},
+        {id: 3, name: "Александр"},
+        {id: 4, name: "Фёдор"},
+        {id: 5, name: "Кирилл"}
     ],
     messages: [
-        {id: 1, message: "Здарова"},
-        {id: 2, message: "Ну шо?"},
-        {id: 3, message: "Го пить пиво"},
-        {id: 4, message: "Ыть"},
-        {id: 5, message: "Кавооо?"}
+        {id: 1, message: "Привет!"},
+        {id: 2, message: "Как дела?"},
+        {id: 3, message: "React + Redux"},
+        {id: 4, message: "Learn JS"},
+        {id: 5, message: "Пока"}
     ]
 };
 

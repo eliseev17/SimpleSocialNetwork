@@ -34,13 +34,13 @@ const MyPosts = React.memo(props => {
 
     return (
         <div className={s.postsBlock}>
-            { props.isOwner &&
-                <div>
+            { props.isOwner
+                ? <div>
                     <h3>My posts</h3>
                     <AddNewPostForm onSubmit={onAddPost}/>
                 </div>
+                : <h3>Posts</h3>
             }
-            { !props.isOwner && <h3>Posts</h3> }
             <div className={s.posts}>
                 {postsElements}
             </div>
