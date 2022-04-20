@@ -15,7 +15,7 @@ let AddNewPostForm = (props) => {
                        validate={[required, maxLength10]}/>
             </div>
             <div>
-                <button>Add post</button>
+                <button>Добавить запись</button>
             </div>
         </form>
     )
@@ -36,10 +36,10 @@ const MyPosts = React.memo(props => {
         <div className={s.postsBlock}>
             { props.isOwner
                 ? <div>
-                    <h3>My posts</h3>
+                    <h3>Мои записи</h3>
                     <AddNewPostForm onSubmit={onAddPost}/>
                 </div>
-                : <h3>Posts</h3>
+                : <h3>Записи</h3>
             }
             <div className={s.posts}>
                 {postsElements}

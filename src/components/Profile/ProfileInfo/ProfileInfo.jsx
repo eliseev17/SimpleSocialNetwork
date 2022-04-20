@@ -29,16 +29,18 @@ const ProfileInfo = ({profile, status, updateUserStatus, isOwner, savePhoto, sav
         <div>
             <div className={s.descriptionBlock}>
                 <div>
-                    <h1>{profile.fullName}</h1>
+                    <h1 className={s.fullName}>{profile.fullName}</h1>
+                    <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus} isOwner={isOwner}/>
                 </div>
                 <div className={s.mainPhotoContainer}>
-                    <img src={profile.photos.large || userPhoto} className={s.mainPhoto}/>
-                    { isOwner && <label className={s.fileInput}>
-                        <input type={"file"} onChange={onMainPhotoSelected}/>
-                        Update photo
-                    </label> }
+                    <span className={s.changesInputOnImgHover}>
+                       <img src={profile.photos.large || userPhoto} className={s.mainPhoto}/>
+                        { isOwner && <label className={s.fileInput}>
+                            <input type={"file"} onChange={onMainPhotoSelected}/>
+                            Обновить фотографию
+                        </label> }
+                    </span>
                 </div>
-                <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
                 { editMode
                     ? <ProfileDataForm onSubmit={onSubmit} initialValues={profile} profile={profile} />
                     : <ProfileData profile={profile} isOwner={isOwner} activateEditMode={() => {setEditMode(true)}}/> }

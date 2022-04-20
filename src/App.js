@@ -36,6 +36,9 @@ class App extends React.Component {
                            render={withSuspense(ProfileContainer)}/>
                     <Route path='/users' render={() => <UsersContainer/>}/>
                     <Route path='/login' render={() => <LoginPage/>}/>
+                    <Route path='/music' render={() => <p>coming soon...</p>}/>
+                    <Route path='/settings' render={() => <p>coming soon...</p>}/>
+                    <Route path='/news' render={() => <p>coming soon...</p>}/>
                 </div>
             </div>
         );

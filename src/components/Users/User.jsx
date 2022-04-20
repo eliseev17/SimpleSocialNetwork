@@ -20,13 +20,13 @@ let User = ({user, followingInProgress, follow, unfollow}) => {
                                   onClick={() => {
                                       unfollow(user.id);
                                   }}>
-                            Unfollow</button>
+                            Отписаться</button>
                         : <button disabled={followingInProgress
                             .some(id => id === user.id)}
                                   onClick={() => {
                                       follow(user.id);
                                   }}>
-                            Follow</button>}
+                            Подписаться</button>}
                 </div>
             </span>
             <span>
@@ -35,8 +35,8 @@ let User = ({user, followingInProgress, follow, unfollow}) => {
                     <div>{user.status}</div>
                 </span>
                 <span>
-                    <div>{"user.location.country"}</div>
-                    <div>{"user.location.city"}</div>
+                    {/*<div>{"user.location.country"}</div>*/}
+                    {/*<div>{"user.location.city"}</div>*/}
                 </span>
             </span>
         </div>

@@ -11,7 +11,7 @@
     max-width: 200px;
 }
 
-.mainPhotoContainer:hover .fileInput {
+.changesInputOnImgHover:hover .fileInput {
     opacity: 0.7;
 }
 
@@ -33,5 +33,26 @@ input[type="file"] {
 }
 
 .contact {
-    padding-left: 10px;
+    padding-right: 12px;
+}
+
+.contacts {
+    padding-top: 10px;
+}
+
+.contactPhoto {
+    max-width: 50px;
+}
+
+.fullName {
+    margin-bottom: 0;
+}
+
+.status {
+    margin-bottom: 10px;
+}
+
+.statusSpan span:hover {
+    background-color: #e0dcd3;
+    cursor: pointer;
 }
