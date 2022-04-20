@@ -30,7 +30,7 @@ class App extends React.Component {
             return <Preloader/>
 
         return (
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', maxWidth: '100%' }}>
                 <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: 'black' }}>
                     <HeaderContainer/>
                 </AppBar>
@@ -38,8 +38,9 @@ class App extends React.Component {
                     variant="permanent"
                     sx={{
                         width: '15%',
+                        minWidth: 140,
                         flexShrink: 0,
-                        [`& .MuiDrawer-paper`]: { width: '15%', boxSizing: 'border-box', backgroundColor: '#383838'},
+                        [`& .MuiDrawer-paper`]: { width: '15%', minWidth: 140, boxSizing: 'border-box', backgroundColor: '#383838'},
                     }}>
                     <Toolbar />
                     <Box sx={{ overflow: 'auto'}}>
