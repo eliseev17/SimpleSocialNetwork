@@ -38,7 +38,6 @@ class App extends React.Component {
                     variant="permanent"
                     sx={{
                         width: '15%',
-                        flexGrow: 1,
                         flexShrink: 0,
                         [`& .MuiDrawer-paper`]: { width: '15%', boxSizing: 'border-box', backgroundColor: '#383838'},
                     }}>
