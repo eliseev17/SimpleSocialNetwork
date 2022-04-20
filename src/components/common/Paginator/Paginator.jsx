@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import styles from "./Paginator.module.css";
 import cn from "classnames"
+import {Pagination} from "@mui/material";
 
 let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize = 10}) => {
 
@@ -16,7 +17,16 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
     let leftPortionPageNumber = (portionNumber - 1) * portionSize + 1;
     let rightPortionPageNumber = portionNumber * portionSize;
 
-    return <div className={styles.paginator}>
+    const handleChange = (event, page) => {
+        currentPage = page;
+        onPageChanged(page);
+    };
+
+
+    return  <div className={styles.paginator}>
+        <Pagination count={pagesCount} page={currentPage} onChange={handleChange} />
+    </div>
+    /*<div className={styles.paginator}>
         { portionNumber > 1 &&
             <button onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button> }
         { pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -29,7 +39,7 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portion
         })}
         { portionCount > portionNumber &&
             <button onClick={() => { setPortionNumber(portionNumber + 1) }}>NEXT</button> }
-    </div>
+    </div>*/
 }
 
 export default Paginator;

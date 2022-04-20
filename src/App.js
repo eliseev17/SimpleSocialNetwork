@@ -11,6 +11,10 @@ import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
+import AppBar from "@mui/material/AppBar";
+import {Drawer} from "@mui/material";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -26,21 +30,36 @@ class App extends React.Component {
             return <Preloader/>
 
         return (
-            <div className='app-wrapper'>
-                <HeaderContainer/>
-                <Navbar/>
-                <div className='app-wrapper-content'>
-                    <Route path='/dialogs'
-                           render={withSuspense(DialogsContainer)}/>
-                    <Route path='/profile/:userId?'
-                           render={withSuspense(ProfileContainer)}/>
-                    <Route path='/users' render={() => <UsersContainer/>}/>
-                    <Route path='/login' render={() => <LoginPage/>}/>
-                    <Route path='/music' render={() => <p>coming soon...</p>}/>
-                    <Route path='/settings' render={() => <p>coming soon...</p>}/>
-                    <Route path='/news' render={() => <p>coming soon...</p>}/>
-                </div>
-            </div>
+            <Box sx={{ display: 'flex' }}>
+                <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: 'black' }}>
+                    <HeaderContainer/>
+                </AppBar>
+                <Drawer
+                    variant="permanent"
+                    sx={{
+                        width: '15%',
+                        flexGrow: 1,
+                        flexShrink: 0,
+                        [`& .MuiDrawer-paper`]: { width: '15%', boxSizing: 'border-box', backgroundColor: '#383838'},
+                    }}>
+                    <Toolbar />
+                    <Box sx={{ overflow: 'auto'}}>
+                        <Navbar/>
+                    </Box>
+                </Drawer>
+                <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: '#f5f5ef' }}>
+                    <Toolbar />
+                        <Route path='/dialogs'
+                               render={withSuspense(DialogsContainer)}/>
+                        <Route path='/profile/:userId?'
+                               render={withSuspense(ProfileContainer)}/>
+                        <Route path='/users' render={() => <UsersContainer/>}/>
+                        <Route path='/login' render={() => <LoginPage/>}/>
+                        <Route path='/music' render={() => <p>coming soon...</p>}/>
+                        <Route path='/settings' render={() => <p>coming soon...</p>}/>
+                        <Route path='/news' render={() => <p>coming soon...</p>}/>
+                </Box>
+            </Box>
         );
     }
 }
