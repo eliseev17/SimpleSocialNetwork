@@ -1,10 +1,11 @@
 import React from "react";
 import s from "./ProfileInfo.module.css";
+import {Button} from "@mui/material";
 
 const ProfileData = ({profile, isOwner, activateEditMode}) => {
     return <div>
         { isOwner && <div>
-            <button onClick={activateEditMode}>Редактировать</button>
+            <Button sx={{width: 200}} color="inherit" variant="contained" onClick={activateEditMode}>Редактировать</Button>
         </div> }
         <div>
             <b>В поиске работы</b>: {profile.lookingForAJob ? "да" : "нет"}

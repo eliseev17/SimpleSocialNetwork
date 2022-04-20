@@ -3,11 +3,12 @@ import s from './ProfileInfo.module.css';
 import {createField, Input, Textarea} from "../../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
 import style from "../../common/FormsControls/FormControls.module.css";
+import {Button} from "@mui/material";
 
 const ProfileDataForm = ({handleSubmit, profile, error}) => {
     return <form onSubmit={handleSubmit}>
         <div>
-            <button>Сохранить</button>
+            <Button sx={{width: 200}} color="inherit" variant="contained">Сохранить</Button>
         </div>
         {error && <div className={style.formSummaryError}>
             {error}

@@ -1,5 +1,5 @@
 import React from "react";
-import {HashRouter, Route, withRouter} from "react-router-dom";
+import {HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer";
@@ -12,7 +12,7 @@ import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store";
 import {withSuspense} from "./hoc/withSuspense";
 import AppBar from "@mui/material/AppBar";
-import {Drawer} from "@mui/material";
+import {Container, Drawer} from "@mui/material";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 
@@ -30,8 +30,9 @@ class App extends React.Component {
             return <Preloader/>
 
         return (
-            <Box sx={{ display: 'flex', maxWidth: '100%' }}>
-                <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: 'black' }}>
+            <Box sx={{display: 'flex', maxWidth: '100%'}}>
+                <AppBar position="fixed"
+                        sx={{zIndex: (theme) => theme.zIndex.drawer + 1, color: 'black', backgroundColor: 'gold'}}>
                     <HeaderContainer/>
                 </AppBar>
                 <Drawer
@@ -40,24 +41,31 @@ class App extends React.Component {
                         width: '15%',
                         minWidth: 140,
                         flexShrink: 0,
-                        [`& .MuiDrawer-paper`]: { width: '15%', minWidth: 140, boxSizing: 'border-box', backgroundColor: '#383838'},
+                        [`& .MuiDrawer-paper`]: {
+                            width: '15%', minWidth: 140, boxSizing: 'border-box', backgroundColor: '#383838'
+                        },
                     }}>
-                    <Toolbar />
-                    <Box sx={{ overflow: 'auto'}}>
+                    <Toolbar/>
+                    <Box sx={{overflow: 'auto'}}>
                         <Navbar/>
                     </Box>
                 </Drawer>
-                <Box component="main" sx={{ flexGrow: 1, p: 3, backgroundColor: '#f5f5ef' }}>
-                    <Toolbar />
+                <Box component="main" sx={{flexGrow: 1, p: 3, backgroundColor: '#f5f5ef'}}>
+                    <Toolbar/>
+                    <Switch>
+                        <Route exact path='/'
+                               render={() => <Redirect to={'/profile'}/>}/>
                         <Route path='/dialogs'
                                render={withSuspense(DialogsContainer)}/>
                         <Route path='/profile/:userId?'
                                render={withSuspense(ProfileContainer)}/>
                         <Route path='/users' render={() => <UsersContainer/>}/>
                         <Route path='/login' render={() => <LoginPage/>}/>
-                        <Route path='/music' render={() => <p>coming soon...</p>}/>
-                        <Route path='/settings' render={() => <p>coming soon...</p>}/>
-                        <Route path='/news' render={() => <p>coming soon...</p>}/>
+                        <Route path='/music' render={() => <div>coming soon...</div>}/>
+                        <Route path='/settings' render={() => <div>coming soon...</div>}/>
+                        <Route path='/news' render={() => <div>coming soon...</div>}/>
+                        <Route path='*' render={() => <div>404 NOT FOUND</div>}/>
+                    </Switch>
                 </Box>
             </Box>
         );
